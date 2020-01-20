@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 export interface DialogData {
   title: string;
   content: string;
@@ -15,10 +16,13 @@ export class AskQuestionDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AskQuestionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, public apiService: ApiServiceService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  close() {
+    this.onNoClick()
   }
 
   ngOnInit() {
@@ -26,6 +30,11 @@ export class AskQuestionDialogComponent implements OnInit {
 
   submitQuestion() {
 
+  }
+
+  getCandidates() {
+    console.log(this.apiService.candidates);
+    return this.apiService.candidates;
   }
 
 }

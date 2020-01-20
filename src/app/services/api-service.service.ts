@@ -4,7 +4,11 @@ import { auth, firestore } from 'firebase/app';
 import { FirebaseApp } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
+import { timingSafeEqual } from 'crypto';
+export interface Kandidat {
+  name: string;
+  id: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -12,13 +16,35 @@ export class ApiServiceService {
 
   private firestore: AngularFirestore
   items: Observable<any[]>;
+  candidates: Observable<any[]>;
+  candidatesQuery: Observable<any[]>;
 
   constructor(public auth: AngularFireAuth, private afs: AngularFirestore) {
-    this.firestore = afs;
-    this.listenToQuestions()
+    this.auth = auth;
+    this.firestore = afs
+    this.startListener()
   }
+
+  /**
+   * Starts listener - should be called after login
+   */
+  startListener() {
+    this.listenToQuestions()
+    this.listenCandidates()
+  }
+
+  /**
+   * Looks for new questions
+   */
   listenToQuestions() {
     this.items = this.firestore.collection('items').valueChanges();
+  }
+
+  /**
+   * Listen to the candidate names
+   */
+  listenCandidates() {
+    this.candidates = this.firestore.collection('kandidaten').doc('lorch').collection('kandidatenNamen').valueChanges();
   }
 
 

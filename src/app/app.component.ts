@@ -21,6 +21,8 @@ export class AppComponent {
     this.afAuth.auth.onAuthStateChanged(function (user) {
       if (user) {
         console.log('EINGELOGGT');
+
+        this.apiService = new ApiServiceService(this.afAuth, this.afs)
       }
     });
     this.afAuth.auth.signInAnonymously().catch(error => {
@@ -34,7 +36,6 @@ export class AppComponent {
         console.error(error);
       }
     });
-    this.apiService = new ApiServiceService(this.afAuth, this.afs)
   }
   logout() {
     this.afAuth.auth.signOut();

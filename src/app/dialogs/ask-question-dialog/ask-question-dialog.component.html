@@ -1,12 +1,27 @@
-<h1 mat-dialog-title>Stellen Sie eine Frage!</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <input matInput>
+
+<h1 mat-dialog-title>Stellen Sie eine Frage</h1>
+<mat-dialog-content class="row">
+
+    <mat-form-field class="col-xs-8">
+        <input matInput
+                placeholder="Ein guter Titel für Ihre Frage">
+    </mat-form-field>
+    <div class="col-xs-4"></div>
+    <mat-form-field class="col-xs-12">
+      <textarea matInput placeholder="Führen Sie Ihre Frage aus"></textarea>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput>
+
+  <mat-form-field class="col-xs-12">
+    <mat-label>An welchen Kandidaten/Kandidatin wollen Sie Ihre Frage stellen?</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let candidate of this.getCandidates() | async" [value]="candidate.name">
+        {{candidate.name}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="submitQuestion()" cdkFocusInitial>Frage stellen</button>
-</div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="this.close()">Abbrechen</button>
+    <button class="mat-raised-button"(click)="this.submitQuestion()">Frage stellen</button>
+</mat-dialog-actions>
