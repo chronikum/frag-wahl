@@ -23,7 +23,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -55,6 +55,8 @@ import { SidebarComponentComponent } from './components/sidebar-component/sideba
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-question-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { environment } from '../environments/environment';
     LoginPageComponent,
     DashboardPageComponent,
     SidebarComponentComponent,
+    AskQuestionDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -110,6 +113,7 @@ import { environment } from '../environments/environment';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    MatDialogModule,
   ],
   exports: [
     A11yModule,
@@ -157,7 +161,12 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     AngularFireAuth,
+    AngularFirestore,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AskQuestionDialogComponent,
+  ]
 })
 export class AppModule { }

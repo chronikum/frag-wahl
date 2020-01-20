@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-
+import { ApiServiceService } from './services/api-service.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,9 +12,9 @@ export class AppComponent {
   title = 'frag-wahl';
 
   sideBarOpen = true;
+  private apiService: ApiServiceService
 
-
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
     this.login();
   }
   login() {
@@ -33,6 +34,7 @@ export class AppComponent {
         console.error(error);
       }
     });
+    this.apiService = new ApiServiceService(this.afAuth, this.afs)
   }
   logout() {
     this.afAuth.auth.signOut();

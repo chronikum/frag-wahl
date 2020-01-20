@@ -1,10 +1,16 @@
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-card>Hier finden Sie neue und beliebte Fragen!
-    <mat-card-content>
+    <mat-card-content class="questionBox">
       <mat-list role="list">
-        <mat-list-item role="listitem">Item 1</mat-list-item>
-        <mat-list-item role="listitem">Item 2</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item>
+        <mat-list-item role="listitem">
+          <ul class="container question">
+          <div class="text" *ngFor="let item of apiService.items | async">
+            <mat-card-title>{{item.title}}
+              <mat-card-content>{{item.content}}</mat-card-content>
+            </mat-card-title>
+          </div>
+        </ul>
+      </mat-list-item>
       </mat-list>
     </mat-card-content>
   </mat-card>
