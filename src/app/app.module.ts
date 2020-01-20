@@ -57,6 +57,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-question-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-qu
     PortalModule,
     ScrollingModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   exports: [
     A11yModule,
@@ -158,6 +160,7 @@ import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-qu
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AngularFireAuth,

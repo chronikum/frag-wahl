@@ -4,7 +4,7 @@
       <mat-list role="list">
         <mat-list-item role="listitem">
           <ul class="container question">
-          <div class="text" *ngFor="let item of apiService.items | async">
+          <div class="text" *ngFor="let item of this.questions">
             <mat-card-title>{{item.title}}
               <mat-card-content>{{item.content}}</mat-card-content>
             </mat-card-title>

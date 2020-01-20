@@ -9,6 +9,11 @@ export interface Kandidat {
   name: string;
   id: number;
 }
+export interface Question {
+  title: string;
+  content: string;
+  candidates: string[];
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -47,5 +52,15 @@ export class ApiServiceService {
     this.candidates = this.firestore.collection('kandidaten').doc('lorch').collection('kandidatenNamen').valueChanges();
   }
 
+  /**
+   * Adds Question
+   */
+  addQuestion(question: Question) {
+    console.log('Frage erhalten: ' + question);
+  }
 
+  // XSS Prevention
+  uploadQuestion(question: Question) {
+
+  }
 }

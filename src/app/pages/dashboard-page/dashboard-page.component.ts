@@ -7,12 +7,21 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   styleUrls: ['./dashboard-page.component.scss']
 })
 export class DashboardPageComponent implements OnInit {
-
+  questions = []
   constructor(public apiService: ApiServiceService) {
-
+    this.apiService.items.subscribe(check => {
+      console.log(JSON.stringify(check))
+      if (!JSON.stringify(check).includes('>') && !JSON.stringify(check).includes('<')) {
+        this.questions = check;
+      }
+    })
   }
 
   ngOnInit() {
+  }
+
+  getQuestions() {
+
   }
 
 }
