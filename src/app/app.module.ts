@@ -58,6 +58,9 @@ import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-question-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { QuestionListComponent } from './components/question-list/question-list.component';
+
 
 @NgModule({
   declarations: [
@@ -66,8 +69,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardPageComponent,
     SidebarComponentComponent,
     AskQuestionDialogComponent,
+    QuestionListComponent,
   ],
   imports: [
+    FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     AppRoutingModule,
@@ -170,6 +175,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   bootstrap: [AppComponent],
   entryComponents: [
     AskQuestionDialogComponent,
+    QuestionListComponent
   ]
 })
 export class AppModule { }

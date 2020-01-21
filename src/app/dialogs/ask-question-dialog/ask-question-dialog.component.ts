@@ -43,10 +43,16 @@ export class AskQuestionDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Submit question to firebase
+   */
   submitQuestion() {
     this.collectValues();
   }
 
+  /**
+   * Collects values and uploads the question
+   */
   collectValues() {
     this.questionTitle = this.questionForm.value.title;
     this.questionContent = this.questionForm.value.content;
@@ -59,9 +65,11 @@ export class AskQuestionDialogComponent implements OnInit {
       title: this.questionTitle,
       content: this.questionContent,
       candidates: this.candidates,
+      id: null,
     };
 
     this.apiService.addQuestion(question);
+    this.close();
   }
 
   getCandidates() {

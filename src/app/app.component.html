@@ -1,18 +1,22 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
 
-<mat-toolbar color="primary">
-  <button class="menuButton" mat-button mat-flat-button (click)="this.toggleMenu()">Menü</button>
-  <span class="siteTitle">Frag zur Wahl!</span>
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
-</mat-toolbar>
+<div class="row">
+  <mat-toolbar class="col-xs-12" color="primary">
+    <button class="menuButton" mat-button mat-flat-button (click)="sidenav.toggle()">Menü</button>
+    <span class="siteTitle">Frag zur Wahl!</span>
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav *ngIf="sideBarOpen" mode="side" opened>
-    <app-sidebar-component></app-sidebar-component>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-dashboard-page></app-dashboard-page>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container class="row">
+    <mat-sidenav #sidenav [mode]="over">
+      <p>
+        <app-sidebar-component></app-sidebar-component>
+      </p>
+    </mat-sidenav>
+    <mat-sidenav-content class="col-xs-12">
+      <app-dashboard-page></app-dashboard-page>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
