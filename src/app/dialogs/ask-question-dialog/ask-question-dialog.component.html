@@ -1,6 +1,6 @@
 
 <h1 mat-dialog-title>Stellen Sie eine Frage</h1>
-<mat-dialog-content class="row">
+<mat-dialog-content class="container-flex row">
 <form class="col-xs-12 row" [formGroup]="questionForm">
     <mat-form-field class="col-xs-12">
         <input formControlName="title" matInput
@@ -13,7 +13,13 @@
 
   <mat-form-field class="col-xs-12">
     <mat-label>Standardmäßig addressiert sich Ihre Frage an alle Kandidierenden.</mat-label>
-    <mat-select formControlName="candidates" multiple class="col-xs-12">
+    <mat-select formControlName="candidates" multiple class="col-xs-12" [value]="'All'">
+      <mat-select-trigger>
+        {{this.questionForm.get('candidates').value ? this.questionForm.get('candidates').value[0] : ''}}
+        <span *ngIf="this.questionForm.get('candidates').value?.length > 1" class="example-additional-selection">
+          (+{{this.questionForm.get('candidates').value.length - 1}} {{this.questionForm.get('candidates').value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
       <mat-option *ngFor="let candidate of this.getCandidates() | async" [value]="candidate.name">
         {{candidate.name}}
       </mat-option>

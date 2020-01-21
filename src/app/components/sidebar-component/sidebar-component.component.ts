@@ -26,7 +26,7 @@ export class SidebarComponentComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AskQuestionDialogComponent, {
-      width: '600px',
+      width: '95%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
