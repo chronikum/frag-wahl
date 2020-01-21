@@ -63,6 +63,8 @@ import { QuestionListComponent } from './components/question-list/question-list.
 import { AboutDialogComponent } from './dialogs/about-dialog/about-dialog.component';
 import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaimer-dialog.component';
 
+import { RecaptchaModule } from 'angular-google-recaptcha';
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,7 @@ import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaime
   imports: [
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     NoopAnimationsModule,
     A11yModule,
@@ -125,6 +127,9 @@ import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaime
     ScrollingModule,
     MatDialogModule,
     ReactiveFormsModule,
+    RecaptchaModule.forRoot({
+      siteKey: '6LcNUtEUAAAAAGycmSLbixSEn3qo3Us_6lWOKjUU',
+    }),
   ],
   exports: [
     A11yModule,

@@ -3,8 +3,7 @@
 
 <div class="main container-flex">
   <mat-toolbar class="col-xs-12" color="primary">
-    <button class="menuButton" mat-button mat-flat-button (click)="sidenav.toggle()">Menü</button>
-    <span class="siteTitle">Frag zur Wahl! (frag-zur-wahl.de)</span>
+    <button class="menuButton" mat-button mat-flat-button (click)="sidenav.toggle()">Menü / Frage stellen</button>
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
 
@@ -12,7 +11,7 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="row">
-    <mat-sidenav #sidenav [mode]="over">
+    <mat-sidenav #sidenav [mode]="'over'">
       <p>
         <app-sidebar-component></app-sidebar-component>
       </p>

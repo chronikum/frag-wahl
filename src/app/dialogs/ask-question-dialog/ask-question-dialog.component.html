@@ -12,17 +12,22 @@
   </mat-form-field>
 
   <mat-form-field class="col-xs-12">
-    <mat-label>An welchen Kandidaten/Kandidatin wollen Sie Ihre Frage stellen?</mat-label>
+    <mat-label>Standardmäßig addressiert sich Ihre Frage an alle Kandidierenden.</mat-label>
     <mat-select formControlName="candidates" multiple class="col-xs-12">
       <mat-option *ngFor="let candidate of this.getCandidates() | async" [value]="candidate.name">
         {{candidate.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <recaptcha
+    formControlName="recaptcha"
+    (scriptLoad)="onScriptLoad()"
+    (scriptError)="onScriptError()"
+  ></recaptcha>
 </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <button class="mat-raised-button"(click)="this.close()">Abbrechen</button>
-    <button class="mat-raised-button"(click)="this.submitQuestion()">Frage stellen</button>
+    <button class="mat-raised-button"(click)="this.submitQuestion()" [disabled]="!this.questionForm.valid">Frage stellen</button>
 </mat-dialog-actions>
