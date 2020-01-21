@@ -55,4 +55,10 @@ export class QuestionListComponent implements OnInit {
     return id;
   }
 
+  // Calculate date and time
+  getTimeforQuestion(timestamp: number) {
+
+    return new Date(timestamp).toLocaleString();
+  }
+
 }
