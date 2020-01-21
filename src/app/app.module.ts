@@ -60,6 +60,8 @@ import { AskQuestionDialogComponent } from './dialogs/ask-question-dialog/ask-qu
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { QuestionListComponent } from './components/question-list/question-list.component';
+import { AboutDialogComponent } from './dialogs/about-dialog/about-dialog.component';
+import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaimer-dialog.component';
 
 
 @NgModule({
@@ -70,6 +72,8 @@ import { QuestionListComponent } from './components/question-list/question-list.
     SidebarComponentComponent,
     AskQuestionDialogComponent,
     QuestionListComponent,
+    AboutDialogComponent,
+    DisclaimerDialogComponent,
   ],
   imports: [
     FontAwesomeModule,
@@ -175,7 +179,9 @@ import { QuestionListComponent } from './components/question-list/question-list.
   bootstrap: [AppComponent],
   entryComponents: [
     AskQuestionDialogComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    AboutDialogComponent,
+    DisclaimerDialogComponent
   ]
 })
 export class AppModule { }

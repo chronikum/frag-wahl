@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiServiceService, Question } from 'src/app/services/api-service.service';
-import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 export interface DialogData {
@@ -26,9 +26,9 @@ export class AskQuestionDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AskQuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public apiService: ApiServiceService, fb: FormBuilder) {
     this.questionForm = fb.group({
-      title: [''],
-      content: [''],
-      candidates: [[]],
+      title: ['', [Validators.required]],
+      content: ['', [Validators.required]],
+      candidates: [this.getCandidates(), [Validators.required]],
     });
 
   }
