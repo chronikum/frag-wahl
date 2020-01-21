@@ -26,13 +26,22 @@ export class QuestionListComponent implements OnInit {
   }
 
   getItems() {
-    if (this.mode === 'popular') {
-      this.items = this.items.sort((a, b) => b.likes - a.likes);
+    if (this.items) {
+      if (this.mode === 'popular') {
+        this.items = this.items.sort((a, b) => b.likes - a.likes);
+      }
+      if (this.mode === 'new') {
+        this.items = this.items.sort((a, b) => b.created - a.created);
+      }
+      return this.items;
     }
-    if (this.mode === 'new') {
-      this.items = this.items.sort((a, b) => b.created - a.created);
+  }
+
+  dataLoaded() {
+    if (this.items.length !== 0) {
+      return true;
     }
-    return this.items;
+    return false;
   }
 
   /**

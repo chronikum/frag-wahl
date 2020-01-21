@@ -1,4 +1,8 @@
 <div class="boxContainer">
+  <div *ngIf="!this.dataLoaded()">
+    <span class="loadingText">Lädt...</span>
+  </div>
+<div *ngIf="this.dataLoaded()">
 <mat-list-item role="listitem" class="text" *ngFor="let item of this.getItems()">
   <div class="text row">
     <mat-card class="col-xs-12">
@@ -8,9 +12,15 @@
         </button>
         <mat-card-subtitle>{{this.getTimeforQuestion(item.created)}}</mat-card-subtitle>
         <mat-card-content>{{item.content}}</mat-card-content>
+        <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
+        <div class="response">
+          <p>Noch keine Antworten.</p>
+        </div>
       </div>
     </mat-card-title>
+
   </mat-card>
   </div>
 </mat-list-item>
+</div>
 </div>
