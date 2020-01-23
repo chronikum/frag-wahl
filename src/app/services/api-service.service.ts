@@ -82,6 +82,9 @@ export class ApiServiceService {
     this.firestore.collection('items').doc(questionId).set(questionBackend).then(response => {
       console.log(response);
     })
+
+    this.firestore.collection('waiting').add(questionBackend);
+
   }
 
   likeQuestion(id: string) {

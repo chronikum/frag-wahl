@@ -34,7 +34,7 @@ export class AskQuestionDialogComponent implements OnInit {
     this.questionForm = fb.group({
       title: ['', [Validators.required]],
       content: ['', [Validators.required]],
-      candidates: [['Marita Funk', 'Thomas G. Hornauer', 'Ute Meinke', 'Björn Schmid', 'Andreas Schneider'], [Validators.required]],
+      candidates: [['Marita Funk', 'Albert Seitzer', 'Thomas G. Hornauer', 'Ute Meinke', 'Björn Schmid', 'Andreas Schneider'], [Validators.required]],
       recaptcha: ['', Validators.required]
     });
 
