@@ -27,12 +27,19 @@ export class DashboardPageComponent implements OnInit {
   popular = "popular";
   new = "new";
 
+  answers = []
+
   constructor(public api: ApiServiceService) {
     this.apiService = api;
     this.apiService.items.subscribe(check => {
       console.log(JSON.stringify(check));
       if (!JSON.stringify(check).includes('>') && !JSON.stringify(check).includes('<')) {
         this.questions = check.sort((a, b) => b.likes - a.likes);
+      }
+      for (var qIndex in this.questions) {
+        var question = this.questions[qIndex];
+        this.apiService.setupQuestionListener(question.id);
+        
       }
     });
   }

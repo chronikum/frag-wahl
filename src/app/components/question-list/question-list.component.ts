@@ -10,27 +10,31 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class QuestionListComponent implements OnInit {
 
   @Input() items = [];
+  @Input() answers = [];
   @Input() apiService: ApiServiceService;
   @Input() mode: string;
 
   questions = [];
 
+  responses: {};
+
   faThumbsUp = faThumbsUp;
 
 
-  constructor() { }
+  constructor() {
+    this.responses = {};
+  }
 
   ngOnInit() {
   }
 
   getQuestions() {
-    return this.questions
+    return this.questions;
   }
 
   getItems() {
     this.questions = this.items;
     if (this.items) {
-      console.log(this.items)
       if (this.mode === 'popular') {
         this.items = this.items.sort((a, b) => b.likes - a.likes);
       }
@@ -75,7 +79,13 @@ export class QuestionListComponent implements OnInit {
   }
 
   loadAnswers(questionID: string) {
-    return this.apiService.getAnswerForQuestion(questionID);
+    return this.apiService.responses[questionID]
   }
+
+  async getAnswers(questionID: string) {
+    return
+  }
+
+
 
 }

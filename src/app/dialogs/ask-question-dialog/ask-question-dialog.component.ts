@@ -90,7 +90,6 @@ export class AskQuestionDialogComponent implements OnInit {
   }
 
   getCandidates() {
-    console.log(this.apiService.candidates);
     return this.apiService.candidates;
   }
 

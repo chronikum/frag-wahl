@@ -14,8 +14,11 @@
         <mat-card-content>{{item.content}}</mat-card-content>
         <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
         <div class="response">
-          {{this.loadAnswers(item.id)}}
-          <p>Noch keine Antworten.</p>
+          <ul>
+            <li *ngFor="let answer of this.loadAnswers(item.id) | async ">
+              {{ answer.answerText }}
+            </li>
+          </ul>
         </div>
       </div>
     </mat-card-title>

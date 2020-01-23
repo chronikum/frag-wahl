@@ -23,6 +23,13 @@ interface AnswerMeta {
   created: number;
 }
 
+
+export interface Answer {
+  questionMeta: QuestionMetadata;
+  answerText: string;
+  created: number;
+}
+
 export interface Question {
   title: string;
   content: string;
@@ -31,6 +38,8 @@ export interface Question {
   id: string;
   fromUser?: string;
   likes?: number;
+  questionSecret?: string;
+  answers?: any[],
 }
 
 @Injectable({
@@ -43,8 +52,10 @@ export class ApiServiceService {
   candidates: Observable<any[]>;
   candidatesQuery: Observable<any[]>;
   questions: Question[];
+  responses = {};
+  answers: Observable<any[]>;
 
-  constructor(public auth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(public auth: AngularFireAuth, public afs: AngularFirestore) {
     this.auth = auth;
     this.firestore = afs;
     this.startListener();
@@ -56,6 +67,7 @@ export class ApiServiceService {
   startListener() {
     this.listenToQuestions();
     this.listenCandidates();
+
   }
 
   /**
@@ -65,9 +77,9 @@ export class ApiServiceService {
     this.items = this.firestore.collection('items').valueChanges();
     this.items.subscribe(questions => {
       // tslint:disable-next-line: prefer-const
-      var questionArray: Question[] = questions;
+      let questionArray: Question[] = questions;
       this.questions = questionArray;
-    })
+    });
   }
 
   /**
@@ -77,6 +89,10 @@ export class ApiServiceService {
     this.candidates = this.firestore.collection('kandidaten').doc('lorch').collection('kandidatenNamen').valueChanges();
   }
 
+
+  areThereAnswerForID(questionID: string) {
+
+  }
   /**
    * Adds Question
    */
@@ -128,12 +144,10 @@ export class ApiServiceService {
     const answer: AnswerMeta = {
       questionMeta, answerText, created: Date.now()
     };
-    // tslint:disable-next-line: max-line-length
-    this.firestore.collection('items').doc(questionMeta.questionID).collection('answers').doc(questionMeta.secret).collection('responses').add(
-      answer
-    ).then(response => {
-      console.log(response);
-    });
+
+    var savekey = questionMeta.questionID.substring(1, 5);
+    savekey += questionMeta.candidateSecret.substring(1, 5);
+    this.firestore.collection('items').doc(questionMeta.questionID).collection('answers').add(answer)
   }
 
   // Generate id
@@ -144,21 +158,21 @@ export class ApiServiceService {
     });
   }
 
-  getAnswerForQuestion(questionID) {
-    let questions = this.firestore.collection('items').doc(questionID).collection('answers').get().subscribe(x => {
-      console.log(x);
-    })
-  }
-
-  async getQuestionForID(questionID: string) {
-
-    return this.questions.forEach(q => {
-      console.log('ASDAS');
-      console.log(q)
-      if (q.id === questionID) {
-        console.log(q.content)
-        return q.content;
+  getQuestionForID(questionID: string) {
+    // tslint:disable-next-line: forin
+    for (const qIndex in this.questions) {
+      const question: Question = this.questions[qIndex];
+      if (question.id === questionID) {
+        return question;
       }
-    })
+    }
   }
+
+  setupQuestionListener(questionID: string) {
+    console.log('SETUP')
+    this.responses[questionID] = this.firestore.collection('items').doc(questionID).collection('answers').valueChanges()
+  }
+
+
+
 }
