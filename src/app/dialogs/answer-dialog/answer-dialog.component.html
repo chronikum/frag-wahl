@@ -1,0 +1,17 @@
+<mat-dialog-content class="row">
+  <div class="col-xs-12 row">
+    <h4 class="col-xs-12">Antwort schreiben</h4>
+    <br>
+    <span class="col-xs-12">Bitte schreiben Sie im folgenden Ihre Antwort.<br></span>
+    <br>
+  <form class="col-xs-12 row" [formGroup]="antwortForm">
+    <mat-form-field class="col-xs-12">
+      <textarea formControlName="answerContent" matInput placeholder="Bitte führen Sie Ihre Antwort aus:"></textarea>
+    </mat-form-field>
+    <label class="col-xs-12">Bitte beachten Sie dass Sie <b>keine</b>> < oder > verwenden.</label>
+  </form>
+  </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <button class="mat-raised-button" (click)="this.antworten()" [disabled]="!this.antwortForm.valid">Antworten</button>
+  </mat-dialog-actions>

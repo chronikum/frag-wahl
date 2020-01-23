@@ -13,6 +13,8 @@ export class QuestionListComponent implements OnInit {
   @Input() apiService: ApiServiceService;
   @Input() mode: string;
 
+  questions = [];
+
   faThumbsUp = faThumbsUp;
 
 
@@ -22,11 +24,13 @@ export class QuestionListComponent implements OnInit {
   }
 
   getQuestions() {
-
+    return this.questions
   }
 
   getItems() {
+    this.questions = this.items;
     if (this.items) {
+      console.log(this.items)
       if (this.mode === 'popular') {
         this.items = this.items.sort((a, b) => b.likes - a.likes);
       }
@@ -68,6 +72,10 @@ export class QuestionListComponent implements OnInit {
   getTimeforQuestion(timestamp: number) {
 
     return new Date(timestamp).toLocaleString();
+  }
+
+  loadAnswers(questionID: string) {
+    return this.apiService.getAnswerForQuestion(questionID);
   }
 
 }

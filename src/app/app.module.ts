@@ -64,6 +64,7 @@ import { AboutDialogComponent } from './dialogs/about-dialog/about-dialog.compon
 import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaimer-dialog.component';
 
 import { RecaptchaModule } from 'angular-google-recaptcha';
+import { AnswerDialogComponent } from './dialogs/answer-dialog/answer-dialog.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { RecaptchaModule } from 'angular-google-recaptcha';
     QuestionListComponent,
     AboutDialogComponent,
     DisclaimerDialogComponent,
+    AnswerDialogComponent,
   ],
   imports: [
     FontAwesomeModule,
@@ -186,7 +188,8 @@ import { RecaptchaModule } from 'angular-google-recaptcha';
     AskQuestionDialogComponent,
     QuestionListComponent,
     AboutDialogComponent,
-    DisclaimerDialogComponent
+    DisclaimerDialogComponent,
+    AnswerDialogComponent
   ]
 })
 export class AppModule { }
