@@ -15,9 +15,16 @@
         <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
         <div class="response">
           <ul>
-            <li *ngFor="let answer of this.loadAnswers(item.id) | async ">
-              {{ answer.answerText }}
-            </li>
+            <div class="row col-xs-12" *ngFor="let answer of this.loadAnswers(item.id) | async ">
+              <div class="col-xs-12">
+                <span class="time col-xs-12">{{answer.created}}</span>
+                <br>
+                <span class="candidate col-xs-12">{{ this.candidates[answer.questionMeta.candidateID].name }}</span>
+                <br>
+                <span class="answerMessage col-xs-12">{{answer.answerText}}</span>
+                <hr>
+              </div>
+            </div>
           </ul>
         </div>
       </div>

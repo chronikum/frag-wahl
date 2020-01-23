@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-question-list',
@@ -20,12 +21,15 @@ export class QuestionListComponent implements OnInit {
 
   faThumbsUp = faThumbsUp;
 
+  candidates = {};
+
 
   constructor() {
     this.responses = {};
   }
 
   ngOnInit() {
+    this.getCandidates()
   }
 
   getQuestions() {
@@ -78,12 +82,24 @@ export class QuestionListComponent implements OnInit {
     return new Date(timestamp).toLocaleString();
   }
 
+  getCandidates() {
+    this.apiService.candidates.subscribe(candArray => {
+      var arrayCandidates: any[] = [];
+      for (var candIndex in candArray) {
+        var candidate = candArray[candIndex];
+        console.log("HALLO WELT");
+        console.log(candidate);
+        this.candidates['' + candidate.id] = candidate;
+      }
+    });
+  }
+
   loadAnswers(questionID: string) {
-    return this.apiService.responses[questionID]
+    return this.apiService.responses[questionID];
   }
 
   async getAnswers(questionID: string) {
-    return
+    return;
   }
 
 

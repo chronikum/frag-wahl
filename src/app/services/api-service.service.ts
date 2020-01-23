@@ -147,7 +147,7 @@ export class ApiServiceService {
 
     var savekey = questionMeta.questionID.substring(1, 5);
     savekey += questionMeta.candidateSecret.substring(1, 5);
-    this.firestore.collection('items').doc(questionMeta.questionID).collection('answers').add(answer)
+    this.firestore.collection('items').doc(questionMeta.questionID).collection('answers').doc(questionMeta.candidateID).set(answer)
   }
 
   // Generate id
