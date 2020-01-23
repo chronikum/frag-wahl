@@ -2,7 +2,7 @@
     <mat-card-content class="row col-xs-12">
       <mat-tab-group class="col-xs-12" mat-align-tabs="center" (selectedTabChange)="selectedTab">
         <mat-tab label="Neu">
-          <app-question-list [items]="this.questions" [answers]="this.answers" [apiService]="this.apiService" [mode]="new"></app-question-list>
+          <app-question-list [items]="this.questions" [answers]="this.answers"[apiService]="this.apiService" [mode]="new"></app-question-list>
         </mat-tab>
         <mat-tab label="Beliebt">
           <app-question-list [items]="this.questions" [answers]="this.answers" [apiService]="this.apiService" [mode]="popular"></app-question-list>

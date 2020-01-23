@@ -32,7 +32,6 @@ export class AnswerDialogComponent implements OnInit {
       answerContent: ['', [Validators.required]],
     });
     console.log('DATA' + data);
-    // this.getQuestionContent()
   }
 
   ngOnInit() {
@@ -40,8 +39,6 @@ export class AnswerDialogComponent implements OnInit {
 
   async getQuestionContent() {
     var questionText = await this.apiService.getQuestionForID(this.data.questionData.questionID);
-    console.log('SCHAU HIER!')
-    console.log(questionText);
   }
 
   antworten() {
@@ -52,6 +49,7 @@ export class AnswerDialogComponent implements OnInit {
     this.answerText = this.antwortForm.value.answerContent;
     console.log(this.answerText);
     this.apiService.answerQuestion(this.data.questionData, this.answerText);
+    this.close()
   }
 
   close(): void {
