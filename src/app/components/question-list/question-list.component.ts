@@ -105,6 +105,12 @@ export class QuestionListComponent implements OnInit {
     return;
   }
 
+  // Is this the most popular question?
+  isMostPopular(questionID: string) {
+    var questionsOrder = this.items.sort((a, b) => b.likes - a.likes);
+    return (questionID === questionsOrder[0].id)
+  }
+
 
 
 }
