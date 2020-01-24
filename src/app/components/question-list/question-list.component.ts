@@ -28,6 +28,9 @@ export class QuestionListComponent implements OnInit {
     this.responses = {};
   }
 
+  getTime(number: number) {
+    return new Date(number).toLocaleString();
+  }
   ngOnInit() {
     this.getCandidates()
   }

@@ -24,6 +24,7 @@ export class AskQuestionDialogComponent implements OnInit {
   questionTitle: string;
   questionContent: string;
   candidates: string[];
+  kandidateNamen = ['Marita Funk', 'Albert Seitzer', 'Thomas G. Hornauer', 'Ute Meinke', 'Björn Schmid', 'Andreas Schneider'];
 
   candidateNames: string[] = [];
 
@@ -93,4 +94,7 @@ export class AskQuestionDialogComponent implements OnInit {
     return this.apiService.candidates;
   }
 
+  getKandidatenNamen() {
+    return this.apiService.candidates;
+  }
 }

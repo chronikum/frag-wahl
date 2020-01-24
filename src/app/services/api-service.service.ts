@@ -54,6 +54,7 @@ export class ApiServiceService {
   questions: Question[];
   responses = {};
   answers: Observable<any[]>;
+  kandidaten: any[];
 
   constructor(public auth: AngularFireAuth, public afs: AngularFirestore) {
     this.auth = auth;
@@ -87,6 +88,14 @@ export class ApiServiceService {
    */
   listenCandidates() {
     this.candidates = this.firestore.collection('kandidaten').doc('lorch').collection('kandidatenNamen').valueChanges();
+    this.kandidaten = []
+    this.candidates.subscribe(candiDaten => {
+      console.log('DATEN')
+      console.log(candiDaten)
+      for (var candIndex in candiDaten) {
+        this.kandidaten.push(candiDaten[candIndex]);
+      }
+    })
   }
 
 
@@ -173,6 +182,8 @@ export class ApiServiceService {
     this.responses[questionID] = this.firestore.collection('items').doc(questionID).collection('answers').valueChanges()
   }
 
-
+  getNamen() {
+    return this.kandidaten;
+  }
 
 }

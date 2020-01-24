@@ -20,7 +20,7 @@
           (+{{this.questionForm.get('candidates').value.length - 1}} {{this.questionForm.get('candidates').value?.length === 2 ? 'other' : 'others'}})
         </span>
       </mat-select-trigger>
-      <mat-option *ngFor="let candidate of this.getCandidates() | async" [value]="candidate.name">
+      <mat-option *ngFor="let candidate of this.apiService.getNamen()" [value]="candidate.name">
         {{candidate.name}}
       </mat-option>
     </mat-select>

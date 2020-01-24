@@ -4,7 +4,7 @@
   </div>
 <div *ngIf="this.dataLoaded()">
 <mat-list-item role="listitem" class="text" *ngFor="let item of this.getItems()">
-  <div class="text row">
+  <div class="text row container-flex">
     <mat-card class="col-xs-12">
     <mat-card-title class="row col-xs-12">
       <div class="col-xs-12">{{item.title}}
@@ -13,11 +13,10 @@
         <mat-card-subtitle>{{this.getTimeforQuestion(item.created)}}</mat-card-subtitle>
         <mat-card-content>{{item.content}}</mat-card-content>
         <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
-        <div class="response">
-          <ul>
+        <div class="col-xs-12 response">
             <div class="row col-xs-12" *ngFor="let answer of this.loadAnswers(item.id) | async ">
               <div class="col-xs-12">
-                <span class="time col-xs-12">{{answer.created}}</span>
+                <span class="time col-xs-12">{{this.getTime(answer.created)}}</span>
                 <br>
                 <span class="candidate col-xs-12">{{ this.candidates[answer.questionMeta.candidateID].name }}</span>
                 <br>
@@ -25,7 +24,6 @@
                 <hr>
               </div>
             </div>
-          </ul>
         </div>
       </div>
     </mat-card-title>
