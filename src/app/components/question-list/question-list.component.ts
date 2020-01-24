@@ -23,6 +23,8 @@ export class QuestionListComponent implements OnInit {
 
   candidates = {};
 
+  randomized: boolean;
+
 
   constructor() {
     this.responses = {};
@@ -32,7 +34,7 @@ export class QuestionListComponent implements OnInit {
     return new Date(number).toLocaleString();
   }
   ngOnInit() {
-    this.getCandidates()
+    this.getCandidates();
   }
 
   getQuestions() {
@@ -51,6 +53,27 @@ export class QuestionListComponent implements OnInit {
       return this.items;
     }
   }
+
+  shuffle(array) {
+    // tslint:disable-next-line: one-variable-per-declaration
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
 
   dataLoaded() {
     if (this.items.length !== 0) {
@@ -87,10 +110,10 @@ export class QuestionListComponent implements OnInit {
 
   getCandidates() {
     this.apiService.candidates.subscribe(candArray => {
-      var arrayCandidates: any[] = [];
-      for (var candIndex in candArray) {
-        var candidate = candArray[candIndex];
-        console.log("HALLO WELT");
+      let arrayCandidates: any[] = [];
+      for (let candIndex in candArray) {
+        let candidate = candArray[candIndex];
+        console.log('HALLO WELT');
         console.log(candidate);
         this.candidates['' + candidate.id] = candidate;
       }
@@ -111,8 +134,8 @@ export class QuestionListComponent implements OnInit {
 
   // Is this the most popular question?
   isMostPopular(questionID: string) {
-    var questionsOrder = this.items.sort((a, b) => b.likes - a.likes);
-    return (questionID === questionsOrder[0].id)
+    let questionsOrder = this.items.sort((a, b) => b.likes - a.likes);
+    return (questionID === questionsOrder[0].id);
   }
 
 
