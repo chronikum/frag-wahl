@@ -101,6 +101,10 @@ export class QuestionListComponent implements OnInit {
     return this.apiService.responses[questionID];
   }
 
+  hasAnswers(questionID: string) {
+    return this.apiService.responses[questionID];
+  }
+
   async getAnswers(questionID: string) {
     return;
   }

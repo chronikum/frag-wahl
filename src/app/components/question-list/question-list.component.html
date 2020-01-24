@@ -9,15 +9,20 @@
     <mat-card-title class="row col-xs-12">
       <div class="col-xs-12">{{item.title}}
         <button (click)="this.likeQuestion(item.id)" mat-flat-button mat-button><fa-icon [icon]="faThumbsUp"></fa-icon><span>{{this.getLikesForQuestion(item.likes)}}</span>
-          <button mat-raised-button *ngIf="this.isMostPopular(item.id)" color="primary">
+          <span class="popularBadge" *ngIf="this.isMostPopular(item.id)" color="primary">
             BELIEBT
-          </button>
+          </span>
         </button>
         <mat-card-subtitle>{{this.getTimeforQuestion(item.created)}}</mat-card-subtitle>
         <mat-card-content>{{item.content}}</mat-card-content>
         <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
         <div class="col-xs-12 response">
-            <div class="row col-xs-12" *ngFor="let answer of this.loadAnswers(item.id) | async ">
+          <div class="col-xs-12" *ngIf="this.loadAnswers(item.id) | async as answers">
+            <small *ngIf="!answers[0]">
+              Noch keine Antworten.
+            </small>
+          </div>
+            <div class="row col-xs-12" *ngFor="let answer of this.loadAnswers(item.id) | async">
               <div class="col-xs-12">
                 <span class="time col-xs-12">{{this.getTime(answer.created)}}</span>
                 <br>
