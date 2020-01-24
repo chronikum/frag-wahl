@@ -1,14 +1,13 @@
-
-<h1 mat-dialog-title>Stellen Sie eine Frage</h1>
 <mat-dialog-content class="container-flex row">
+  <h1 mat-dialog-title>Stellen Sie eine Frage</h1>
 <form class="col-xs-12 row" [formGroup]="questionForm">
     <mat-form-field class="col-xs-12">
-        <input formControlName="title" matInput
+        <input class="fragenTitel" formControlName="title" matInput
                 placeholder="Ein guter Titel für Ihre Frage">
     </mat-form-field>
     <div class="col-xs-4"></div>
     <mat-form-field class="col-xs-12">
-      <textarea formControlName="content" matInput placeholder="Führen Sie Ihre Frage aus"></textarea>
+      <textarea class="fragenInhalt" formControlName="content" matInput placeholder="Führen Sie Ihre Frage aus"></textarea>
   </mat-form-field>
 
   <mat-form-field class="col-xs-12">
@@ -34,6 +33,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button"(click)="this.close()">Abbrechen</button>
-    <button class="mat-raised-button"(click)="this.submitQuestion()" [disabled]="!this.questionForm.valid">Frage stellen</button>
+  <button class="mat-raised-button" (click)="this.close()">Abbrechen</button>
+  <button class="mat-raised-button" (click)="this.submitQuestion()" [disabled]="!this.questionForm.valid">Frage stellen</button>
 </mat-dialog-actions>
