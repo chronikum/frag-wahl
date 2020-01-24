@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ThrowStmt } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -26,8 +27,12 @@ export class QuestionListComponent implements OnInit {
   randomized: boolean;
 
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
     this.responses = {};
+    this.activatedRoute.queryParams.subscribe(params => {
+      let questionRef = params['questionRef'];
+      console.log(questionRef);
+    });
   }
 
   getTime(number: number) {
