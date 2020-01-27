@@ -65,6 +65,7 @@ import { DisclaimerDialogComponent } from './dialogs/disclaimer-dialog/disclaime
 
 import { RecaptchaModule } from 'angular-google-recaptcha';
 import { AnswerDialogComponent } from './dialogs/answer-dialog/answer-dialog.component';
+import { LinkerPipePipe } from './pipes/linker-pipe.pipe';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { AnswerDialogComponent } from './dialogs/answer-dialog/answer-dialog.com
     AboutDialogComponent,
     DisclaimerDialogComponent,
     AnswerDialogComponent,
+    LinkerPipePipe,
   ],
   imports: [
     FontAwesomeModule,

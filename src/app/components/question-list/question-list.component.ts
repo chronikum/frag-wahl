@@ -4,6 +4,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ThrowStmt } from '@angular/compiler';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
@@ -16,6 +17,7 @@ export class QuestionListComponent implements OnInit {
   @Input() apiService: ApiServiceService;
   @Input() mode: string;
 
+  allCandidateNames = ['Marita Funk', 'Albert Seitzer', 'Thomas G. Hornauer', 'Ute Meinke', 'Björn Schmid', 'Andreas Schneider']
   questions = [];
 
   responses: {};
@@ -25,6 +27,8 @@ export class QuestionListComponent implements OnInit {
   candidates = {};
 
   randomized: boolean;
+
+  candidatesAnswered = {}
 
 
   constructor(private activatedRoute: ActivatedRoute) {
@@ -118,11 +122,13 @@ export class QuestionListComponent implements OnInit {
       let arrayCandidates: any[] = [];
       for (let candIndex in candArray) {
         let candidate = candArray[candIndex];
-        console.log('HALLO WELT');
-        console.log(candidate);
         this.candidates['' + candidate.id] = candidate;
       }
     });
+  }
+
+  candidateAnswered(candidateID: number) {
+
   }
 
   loadAnswers(questionID: string) {

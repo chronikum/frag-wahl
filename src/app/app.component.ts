@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { ApiServiceService } from './services/api-service.service';
@@ -25,7 +26,7 @@ export class AppComponent {
   public apiService: ApiServiceService
 
   // tslint:disable-next-line: max-line-length
-  constructor(public dialog: MatDialog, public afAuth: AngularFireAuth, private afs: AngularFirestore, private activatedRoute: ActivatedRoute) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog, public afAuth: AngularFireAuth, private afs: AngularFirestore, private activatedRoute: ActivatedRoute) {
     this.checkLoggedIn()
   }
   checkLoggedIn = async () => {
@@ -101,7 +102,9 @@ export class AppComponent {
     });
     this.afAuth.auth.onAuthStateChanged(function (user) {
       if (user) {
+
         console.log('EINGELOGGT');
+        console.log(user.uid);
         if (!localStorage.getItem('loaded2')) {
           localStorage.setItem('loaded2', 'loaded2');
           window.location.reload();
