@@ -17,12 +17,13 @@
         <mat-card-content><div>{{item.content}}</div></mat-card-content>
         <h6>ANTWORTEN DER KANDIDIERENDEN:</h6>
         <div class="container-flex col-xs-12 response">
+
           <div class="col-xs-12" *ngIf="this.loadAnswers(item.id) | async as answers">
+            <div *ngIf="answers">
             <small *ngIf="!answers[0]">
               Noch keine Antworten.
             </small>
-          </div>
-            <div class="container-flex row col-xs-12" *ngFor="let answer of this.loadAnswers(item.id) | async">
+            <div class="container-flex row col-xs-12" *ngFor="let answer of answers">
               <mat-expansion-panel class="col-xs-12" [expanded]="false">
                 <mat-expansion-panel-header class="col-xs-12 row">
                   <mat-panel-title class="col-xs-12">
@@ -39,7 +40,9 @@
                 </div>
               </mat-expansion-panel>
             </div>
-            <small><b>Alle</b> anderen Kandidierenden haben ebenfalls die Gelegenheit zu antworten. Sehen Sie hier keine Antwort, haben die Kandidierenden noch nicht geantwortet. frag-zur-wahl ist eine neutrale Fragen-Plattform aus Lorch. Alle Kandidierenden wurden telefonisch oder über Mail informiert, bei Gelegenheit persönlich auf diese Plattform angesprochen.</small>
+            </div>
+          </div>
+            <small><b>Alle</b> Kandidierenden haben die Gelegenheit jederzeit zu antworten. Sehen Sie hier keine Antwort(en), haben die Kandidierenden noch nicht geantwortet. frag-zur-wahl ist eine politisch-neutrale Fragen-Plattform aus Lorch von Lorchern. Alle Kandidierenden wurden telefonisch oder über Mail informiert oder bei Gelegenheit persönlich auf diese Plattform angesprochen. Sie haben Fragen an den Entwickler? Kontaktieren Sie uns: <a href="mailto:system@frag-zur-wahl.de">Mail schreiben</a></small>
         </div>
       </div>
     </mat-card-title>
