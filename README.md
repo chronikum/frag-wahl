@@ -12,7 +12,7 @@ Das System steht der Öffentlichkeit hiermit zur freien Verfügung.
 
 ### Verfügbarkeit
 
-Das System steht unter der GNU General Public License v3.0.
+Das System steht unter der GNU Affero General Public License v3.0.
 Sie dürfen dieses Projekt nutzen, modifizieren und veröffentlichen. Jedoch muss die Lizenz gleich bleiben und der Code quelloffen verfügbar sein. Die genauen Lizenzbedingungen finden Sie am Ende dieses Dokuments. Bei Fragen können Sie sich an uns wenden.
 
 #### Bei frag-zur-wahl.de hosten
