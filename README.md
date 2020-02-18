@@ -2,10 +2,12 @@
 
 #### frag-zur-wahl.de ist eine Plattform zur Förderung des Dialogs und der Demokratie vor Bürgermeisterwahlen.
 
+> Sie können dieses System selber hosten oder eine E-Mail an system@frag-zur-wahl.de schreiben. Für das Bereitstellen der Dienste verlangen wir kein Geld. Wir behalten uns aber vor, zu überprüfen, ob Sie gegenüber den Kandidierenden unparteiisch sind.
 
 ### Konzept
 
-
+frag-zur-wahl.de bietet eine Plattform für Bürgerinnen und Bürger, auf welcher diese Fragen an die Kandidierenden des Bürgermeisteramtes stellen können. Diese werden per E-Mail über Fragen benachrichtigt und haben die Möglichkeit, auf diese zu antworten. Das System wurde von einem Entwickler aus Lorch anlässlich der Bürgermeisterwahl 2020 entwickelt.
+Das System steht der Öffentlichkeit hiermit zur freien Verfügung.
 
 ### Verfügbarkeit
 
