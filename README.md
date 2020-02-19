@@ -42,4 +42,4 @@ Zum Bereitstellen in der Entwicklung:
 
 ### LICENSE
 
-
+Die Lizenz finden Sie unter LICENCE.MD
