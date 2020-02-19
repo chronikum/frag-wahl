@@ -28,6 +28,14 @@ Folgen Sie den Installationsanleitungen. Sollten Sie Verbesserungen oder Optimie
 > Das Setup ist noch nicht vollständig.
 > #### Aktuell läuft dieses Programm auf Google Firebase. Dies war notwendig, um eine schnelle Umsetzung zu ermöglichen. Eine Umstellung läuft. Bitte verwenden Sie das Programm bis dahin nicht.
 
+>DEVELOPMENT SETUP
+> #### DIESES SETUP IST NUR ZUR ENTWICKLUNG GEEIGNET.
+
+###### Firebase
+Setzen Sie ein Google Firebase Projekt auf.
+Kopieren Sie dann die Zugangsdaten in `env/`und ersetzen Sie die vorhandenen Dateien.
+
+###### Plattform
 Klonen Sie das Repository:
 
 `git clone https://github.com/chronikum/frag-wahl.git`
