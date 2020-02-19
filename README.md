@@ -51,3 +51,5 @@ Zum Bereitstellen in der Entwicklung:
 ### LICENSE
 
 Die Lizenz finden Sie unter LICENCE.MD
+
+Hinweis: In dem Repo finden sich noch einige Credentials. Diese sind geändert und müssen natürlich für Ihr Setup angepasst werden. Sie wurden in dem Repo gelassen, dass die Git-Commit Hashes mit denen im Vorfeld geposteten übereinstimmen - das garantiert, dass dieser Code wirklich während der Aktion verwendet wurde, da es von einem Kandidierenden anfangs angezweifelt wurde.
